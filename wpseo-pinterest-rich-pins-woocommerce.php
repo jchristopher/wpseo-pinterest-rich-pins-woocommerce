@@ -50,6 +50,7 @@ class WPSEO_Pinterest_Rich_Pins {
 	function __construct() {
 		add_action( 'wpseo_tab_header', array( $this, 'tab_header' ), 990 );
 		add_action( 'wpseo_tab_content', array( $this, 'tab_content' ), 990 );
+		add_filter( 'wpseo_save_metaboxes', array( $this, 'save_metadata' ) );
 	}
 
 	/**
@@ -100,6 +101,25 @@ class WPSEO_Pinterest_Rich_Pins {
 		$this->meta_box->do_tab( 'itiwpseopinterest', __( 'Pinterest', 'iti-wpseo-pinterest' ), $this->pinterest_output( $post ) );
 	}
 
+	function save_metadata( $metadata ) {
+
+		$metadata = array_merge( $metadata, $this->get_meta_field_defs() );
+
+		return $metadata;
+	}
+
+	private function get_meta_field_defs() {
+		return array(
+			$this->prefix . 'pdesc' => array(
+				'title'         => __( 'Description', 'iti-wpseo-pinterest' ),
+				'description'   => __( 'May be truncated, all line breaks and HTML tags will be removed.', 'iti-wpseo-pinterest' ),
+				'class'         => 'iti-wpseo-pinterest-description',
+				'placeholder'   => get_the_title(),
+				'type'          => 'text'
+			),
+		);
+	}
+
 	/**
 	 * Generate the HTML for all of the necessary Pinterest Rich Pin fields that aren't auto-defined by WooCommerce product attributes
 	 *
@@ -110,18 +130,10 @@ class WPSEO_Pinterest_Rich_Pins {
 	function pinterest_output( $post ) {
 		$content = '';
 
-		$meta_fields = array(
-				'description' => array(
-						'title'         => __( 'Description', 'iti-wpseo-pinterest' ),
-						'description'   => __( 'May be truncated, all line breaks and HTML tags will be removed.', 'iti-wpseo-pinterest' ),
-						'class'         => 'iti-wpseo-pinterest-description',
-						'placeholder'   => get_the_title(),
-						'type'          => 'text'
-					),
-			);
+		$meta_fields = $this->get_meta_field_defs();
 
 		foreach ( $meta_fields as $meta_field_key => $meta_field ) {
-			$content .= $this->meta_box->do_meta_box( $meta_field, $this->prefix . $meta_field_key );
+			$content .= $this->meta_box->do_meta_box( $meta_field, $meta_field_key );
 		}
 
 		return $content;
