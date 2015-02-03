@@ -31,9 +31,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class WPSEO_Pinterest_Rich_Pins {
 
-	private $meta_box;	// the WP SEO Meta Box class
+	/**
+	 * Reference to the WP SEO Meta Box class
+	 *
+	 * @since 0.1
+	 * @var object
+	 */
+	private $meta_box;
 
-	private $prefix = 'iti_wpseo_pinterest_';  // used for form field storage via WP SEO
+	/**
+	 * Used for form field storage via WP SEO
+	 *
+	 * @since 0.1
+	 * @var string
+	 */
+	private $prefix = 'iti_wpseo_pinterest_';
 
 	function __construct() {
 		add_action( 'wpseo_tab_header', array( $this, 'tab_header' ), 990 );
@@ -100,11 +112,11 @@ class WPSEO_Pinterest_Rich_Pins {
 
 		$meta_fields = array(
 				'description' => array(
-						'title' 		=> __( 'Description', 'iti-wpseo-pinterest' ),
-						'description' 	=> __( 'May be truncated, all line breaks and HTML tags will be removed.', 'iti-wpseo-pinterest' ),
-						'class' 		=> 'iti-wpseo-pinterest-description',
-						'placeholder' 	=> get_the_title(),
-						'type' 			=> 'text'
+						'title'         => __( 'Description', 'iti-wpseo-pinterest' ),
+						'description'   => __( 'May be truncated, all line breaks and HTML tags will be removed.', 'iti-wpseo-pinterest' ),
+						'class'         => 'iti-wpseo-pinterest-description',
+						'placeholder'   => get_the_title(),
+						'type'          => 'text'
 					),
 			);
 
