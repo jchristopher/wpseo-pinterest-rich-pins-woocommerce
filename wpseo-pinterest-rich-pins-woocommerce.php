@@ -63,6 +63,11 @@ class WPSEO_Pinterest_Rich_Pins {
 		add_action( 'wp_head', array( $this, 'output_rich_pin_meta_markup' ) );
 	}
 
+	/**
+	 * Callback to set our meta_box property to WPSEO's meta box class
+	 *
+	 * @since 0.1
+	 */
 	function set_meta_box() {
 		$this->meta_box = new WPSEO_Metabox();
 	}
@@ -118,6 +123,14 @@ class WPSEO_Pinterest_Rich_Pins {
 		$this->meta_box->do_tab( 'itiwpseopinterest', __( 'Pinterest', 'iti-wpseo-pinterest' ), $content . $this->pinterest_output( $post ) );
 	}
 
+	/**
+	 * Callback for WPSEO's metadata save handler; it needs our meta field definitions
+	 *
+	 * @since 0.1
+	 * @param $metadata array Existing metadata
+	 *
+	 * @return array Metadata definitions
+	 */
 	function save_metadata( $metadata ) {
 
 		$metadata = array_merge( $metadata, $this->get_meta_field_defs() );
@@ -304,4 +317,5 @@ class WPSEO_Pinterest_Rich_Pins {
 
 }
 
+// kickoff
 new WPSEO_Pinterest_Rich_Pins();
