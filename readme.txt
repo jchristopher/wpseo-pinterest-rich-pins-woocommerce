@@ -8,7 +8,7 @@ Stable tag: 0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Add Pinterest Rich Pin data to WooCommerce Product Pages via [WordPress SEO by Yoast](https://wordpress.org/plugins/wordpress-seo/)
+Add Pinterest Rich Pin data to WooCommerce Product Pages via WordPress SEO by Yoast
 
 == Description ==
 
@@ -29,6 +29,10 @@ This plugin is being actively developed on GitHub [https://github.com/jchristoph
 = Why aren't all Rich Pin fields available? =
 
 Any fields that can be auto-populated by WooCommerce product attributes (e.g. price) have been omitted. If a field is missing that you feel should be included, please [open an Issue on GitHub](https://github.com/jchristopher/wpseo-pinterest-rich-pins-woocommerce/issues).
+
+== Screenshots ==
+
+1. New Pinterest tab with Rich Pin fields added to WordPress SEO's meta box
 
 == Changelog ==
 
