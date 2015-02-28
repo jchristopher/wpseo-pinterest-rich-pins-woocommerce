@@ -59,6 +59,7 @@ class WPSEO_Pinterest_Rich_Pins {
 
 		// front end
 		add_filter( 'wpseo_opengraph_title', array( $this, 'opengraph_title' ) );
+		add_filter( 'wpseo_metadesc', array( $this, 'opengraph_description' ) );
 		add_filter( 'wpseo_opengraph_type', array( $this, 'opengraph_type' ) );
 		add_action( 'wp_head', array( $this, 'output_rich_pin_meta_markup' ) );
 	}
@@ -202,7 +203,7 @@ class WPSEO_Pinterest_Rich_Pins {
 
 		$maybe_custom_meta = $this->meta_box->get_value( $this->prefix . $field, $post->ID );
 
-		return ! empty( $maybe_custom_pin_title ) ? trim( $maybe_custom_meta ) : trim( $default );
+		return ! empty( $maybe_custom_meta ) ? trim( $maybe_custom_meta ) : trim( $default );
 	}
 
 	/**
@@ -220,6 +221,26 @@ class WPSEO_Pinterest_Rich_Pins {
 
 		return $og_title;
 	}
+
+
+	/**
+	 * Maybe change the WPSEO OpenGraph Description from the post description to something customized for Pintereset Rich Pin
+	 *
+	 * @since 0.1
+	 * @param $og_description
+	 *
+	 * @return string the OpenGraph Description
+	 */
+	function opengraph_description( $og_description ) {
+		if ( 'product' == get_post_type() ) {
+			$og_description = $this->get_wpseo_metadata( 'description', $og_description );
+		}
+		
+		return $og_description;
+	}
+
+
+
 
 	/**
 	 * Maybe change the WPSEO OpenGraph type from the default to 'product' as per Pinterest API
