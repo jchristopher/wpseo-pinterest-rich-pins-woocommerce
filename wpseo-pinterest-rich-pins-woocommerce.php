@@ -69,7 +69,9 @@ class WPSEO_Pinterest_Rich_Pins {
 	 * @since 0.1
 	 */
 	function set_meta_box() {
-		$this->meta_box = new WPSEO_Metabox();
+		if ( class_exists( 'WPSEO_Metabox' ) ) {
+			$this->meta_box = new WPSEO_Metabox();
+		}
 	}
 
 	/**
