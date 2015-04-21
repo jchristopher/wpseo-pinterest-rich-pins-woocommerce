@@ -3,8 +3,8 @@ Contributors: jchristopher
 Donate link: http://mondaybynoon.com/donate/
 Tags: pinterest, rich, pins, opengraph, open, graph, woocommerce, product, wpseo, wordpress, seo, yoast
 Requires at least: 4.0
-Tested up to: 4.1
-Stable tag: 0.1
+Tested up to: 4.2
+Stable tag: 0.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,10 @@ Any fields that can be auto-populated by WooCommerce product attributes (e.g. pr
 1. New Pinterest tab with Rich Pin fields added to WordPress SEO's meta box
 
 == Changelog ==
+
+= 0.1.1 =
+* Fixed white screen of death if WPSEO was not active (props pjv)
+* Fixed an issue where the proper meta description was not output (props awcase3rd)
 
 = 0.1 =
 *   Initial release

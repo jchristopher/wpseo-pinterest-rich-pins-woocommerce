@@ -3,7 +3,7 @@
 Plugin Name: WPSEO Pinterest Rich Pins for WooCommerce
 Plugin URI: https://github.com/jchristopher/wpseo-pinterest-rich-pins-woocommerce
 Description: Use WordPress SEO to set up Pinterest Rich Pins for WooCommerce Products
-Version: 0.1
+Version: 0.1.1
 Author: Jonathan Christopher
 Author URI: https://mondaybynoon.com/
 Text Domain: iti-wpseo-pinterest
@@ -237,7 +237,7 @@ class WPSEO_Pinterest_Rich_Pins {
 		if ( 'product' == get_post_type() ) {
 			$og_description = $this->get_wpseo_metadata( 'description', $og_description );
 		}
-		
+
 		return $og_description;
 	}
 
