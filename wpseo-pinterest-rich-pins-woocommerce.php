@@ -299,7 +299,7 @@ class WPSEO_Pinterest_Rich_Pins {
 
 		switch ( $stock_level ) {
 			case 'instock':
-				$stock_level = 'in stock';
+				$stock_level = 'instock';
 				break;
 			case 'outofstock';
 				$stock_level = $product->backorders_allowed() ? 'backorder' : 'out of stock';
